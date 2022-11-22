@@ -1,6 +1,4 @@
-from fastapi import FastAPI
-
-app = FastAPI(title="Scoreboard Manager API Server")
+from app import app
 
 
 @app.get("/")
