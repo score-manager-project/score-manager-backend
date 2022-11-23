@@ -14,5 +14,11 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+
+@app.get("/")
+async def read_root():
+    return {"ping": "pong"}
+
+
 app.include_router(auth.router, prefix="/auth", tags=["auth"])
 app.include_router(v1.router, prefix="/api/v1")
