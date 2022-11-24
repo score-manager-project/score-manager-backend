@@ -1,28 +1,25 @@
 from __future__ import annotations
 
-from typing import Optional
-
-from app.core.config import settings
 from app.models.responses import TokenResponse
-from fastapi import APIRouter
+from fastapi import APIRouter, status
 from fastapi.responses import RedirectResponse
 
-from .common import BASE_URL
-from .utils import get_token
+from . import utils
 
 router = APIRouter()
 
 
-@router.get("/login", response_model=TokenResponse)
-async def login(code: Optional[str] = None):
-    if code is None:
-        return RedirectResponse(
-            f"{BASE_URL}/o/authorize/"
-            f"?client_id={settings.NYCU_OAUTH_CLIENT_ID}"
-            "&response_type=code"
-            "&scope=profile"
-            f"&redirect_uri={settings.NYCU_OAUTH_REDIRECT_URI}"
-        )
+@router.get(
+    "/login",
+    response_description="Redirect to NYCU OAuth authorization page",
+)
+async def get_authorization_code():
+    return RedirectResponse(
+        url=utils.get_authorization_url(),
+        status_code=status.HTTP_302_FOUND,
+    )
 
-    token_response = await get_token(code)
-    return token_response
+
+@router.get("/token", response_model=TokenResponse)
+async def get_token(code: str):
+    return await utils.fetch_token(code)
