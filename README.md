@@ -1,13 +1,47 @@
 # Score Manager Backend
 
-FastAPI + Deta
+The backend server for score manager
 
-## Scripts
+## Tech Stack
 
-### `pdm run dev`
+**API Server:** FastAPI
 
-Start a development server running locally on http://localhost:8000/.
+**Database:** Deta Base
 
-### `deta deploy`
+**Deployment Provider:** Deta
 
-Deploy changes to deta.
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`NYCU_OAUTH_CLIENT_ID`
+
+`NYCU_OAUTH_CLIENT_SECRET`
+
+`NYCU_OAUTH_REDIRECT_URI`
+
+## Run Locally
+
+Clone the project
+
+```bash
+git clone https://github.com/score-manager-project/score-manager-backend.git
+```
+
+Go to the project directory
+
+```bash
+cd score-manager-backend
+```
+
+Install dependencies
+
+```bash
+pdm install
+```
+
+Start the server
+
+```bash
+pdm run dev
+```
