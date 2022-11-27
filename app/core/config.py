@@ -3,12 +3,6 @@ from __future__ import annotations
 from pydantic import BaseSettings
 
 
-class DetaSettings(BaseSettings):
-    """Settings for Deta Base."""
-
-    DETA_PROJECT_KEY: str
-
-
 class NYCUAuthSettings(BaseSettings):
     """Settings for NYCU OAuth."""
 
@@ -17,7 +11,7 @@ class NYCUAuthSettings(BaseSettings):
     NYCU_OAUTH_REDIRECT_URI: str
 
 
-class Settings(DetaSettings, NYCUAuthSettings):
+class Settings(NYCUAuthSettings):
     """Overall settings for application"""
 
     class Config:
