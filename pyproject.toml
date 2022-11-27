@@ -10,6 +10,9 @@ dependencies = [
     "fastapi>=0.87.0",
     "uvicorn>=0.20.0",
     "deta>=1.1.0",
+    "httpx>=0.23.1",
+    "pydantic[dotenv]>=1.10.2",
+    "python-multipart>=0.0.5",
 ]
 requires-python = ">=3.7"
 license = {text = "MIT"}
